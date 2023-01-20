@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+
+from sys import argv
+import pdb
+
+def factorize(value):
+	i = 2
+
+	if value < i:
+		return value
+	while value % i:
+		i += 1
+	print("{:d}={:.0f}*{:d}".format(value, value / i, i))
+
+if len(argv) != 2:
+	print("{} <file>".format(argv[0]))
+	exit()
+
+try:
+	filename = argv[1]
+	with open(filename) as file:
+		line = file.readline()
+		while line != "":
+			number = int(line.split('\n')[0])
+			factorize(number)
+			line = file.readline()
+except:
+	pass
